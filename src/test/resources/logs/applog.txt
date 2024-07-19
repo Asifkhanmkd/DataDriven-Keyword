@@ -1,0 +1,5 @@
+INFO    2024-07-16 11:22:26,053 [main] base.BaseTest  - OR Properties Loaded !!!
+INFO    2024-07-16 11:22:28,487 [main] base.BaseTest  - Chrome browser launched
+INFO    2024-07-16 11:22:31,081 [main] base.BaseTest  - Navigated to https://magento.softwaretestingboard.com/
+INFO    2024-07-16 11:22:32,271 [main] base.BaseTest  - Clicked on ElementsignInLink_XPATH
+INFO    2024-07-16 11:22:43,145 [main] base.BaseTest  - Execution of tests completed
