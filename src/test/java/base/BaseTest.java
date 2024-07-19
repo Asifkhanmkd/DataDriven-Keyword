@@ -8,6 +8,7 @@ import java.util.Properties;
 
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
+import org.apache.xmlbeans.impl.xb.xsdschema.Public;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -16,6 +17,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 
+import com.google.inject.Key;
+
+import bsh.This;
 import utilities.ExcelReader;
 
 /* We keep/initialise the following
@@ -32,6 +36,7 @@ import utilities.ExcelReader;
  */
 
 public class BaseTest {
+	
 
 	public static WebDriver driver;
 	public static Logger log = Logger.getLogger(BaseTest.class.getName());
@@ -52,7 +57,7 @@ public class BaseTest {
 			driver.findElement(By.id(OR.getProperty(key))).click();
 		}
 
-		log.info("Clicked on Element" + key);
+		log.info("Clicked on Element " + key);
 
 	}
 
@@ -82,20 +87,50 @@ public class BaseTest {
 			} else if (key.endsWith("_ID")) {
 
 				driver.findElement(By.id(OR.getProperty(key)));
-			
-		
 
 			}
-			
-			log.info("Element found" +key);
+
+			log.info("Element found " + key);
 			return true;
-			
+
 		} catch (Throwable t) {
-            log.info("Couldn't find the Element" +key+ " Error log is" +t.getMessage());
+			log.info("Couldn't find the Element " + key + " Error log is" + t.getMessage());
 			return false;
 
 		}
+
 	}
+
+	public static String getText(String key) {
+		 String text = null;
+		
+		try {
+			
+			if (key.endsWith("_XPATH")) {
+				text=driver.findElement(By.xpath(OR.getProperty(key))).getText();
+				
+				
+			} else if (key.endsWith("_CSS")) {
+				text=driver.findElement(By.cssSelector(OR.getProperty(key))).getText();
+				
+			} else if (key.endsWith("_id")) {
+				text=driver.findElement(By.id(OR.getProperty(key))).getText();
+				
+			} 
+			 
+			log.info("text returned "+text);
+			System.out.println(text);
+			
+		} catch (Throwable t) {
+			log.info("Couldn't find the Element" + key + " Error log is" + t.getMessage());
+			
+		}
+		return text;
+		
+
+	}
+
+	
 
 	
 
@@ -104,8 +139,7 @@ public class BaseTest {
 		if (driver == null) {
 
 			PropertyConfigurator.configure(".\\src\\test\\resources\\properties\\log4j.properties");
-			
-			
+
 			try {
 				fis = new FileInputStream(".\\src\\test\\resources\\properties\\config.properties");
 
@@ -136,18 +170,18 @@ public class BaseTest {
 			}
 
 			if (Config.getProperty("browser").equals("chrome")) {
-				//WebDriverManager.chromedriver().setup();
-				//WebDriverManager.firefoxdriver().version("0.29.1").setup();
+				// WebDriverManager.chromedriver().setup();
+				// WebDriverManager.firefoxdriver().version("0.29.1").setup();
 				driver = new ChromeDriver();
 				log.info("Chrome browser launched");
 
 			} else if (Config.getProperty("browser").equals("firefox")) {
-				//WebDriverManager.firefoxdriver().setup();
+				// WebDriverManager.firefoxdriver().setup();
 				driver = new FirefoxDriver();
-				
+
 				log.info("FireFox browser launched");
 			}
-
+			driver.manage().window().maximize();
 			driver.get(Config.getProperty("siteUrl"));
 			log.info("Navigated to " + Config.getProperty("siteUrl"));
 			driver.manage().timeouts()

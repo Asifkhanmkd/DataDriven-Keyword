@@ -1,5 +1,10 @@
-INFO    2024-07-16 11:22:26,053 [main] base.BaseTest  - OR Properties Loaded !!!
-INFO    2024-07-16 11:22:28,487 [main] base.BaseTest  - Chrome browser launched
-INFO    2024-07-16 11:22:31,081 [main] base.BaseTest  - Navigated to https://magento.softwaretestingboard.com/
-INFO    2024-07-16 11:22:32,271 [main] base.BaseTest  - Clicked on ElementsignInLink_XPATH
-INFO    2024-07-16 11:22:43,145 [main] base.BaseTest  - Execution of tests completed
+INFO    2024-07-19 22:04:42,783 [main] base.BaseTest  - OR Properties Loaded !!!
+INFO    2024-07-19 22:04:44,451 [main] base.BaseTest  - Chrome browser launched
+INFO    2024-07-19 22:04:46,462 [main] base.BaseTest  - Navigated to https://magento.softwaretestingboard.com/
+INFO    2024-07-19 22:04:47,253 [main] base.BaseTest  - Clicked on Element signInLink_XPATH
+INFO    2024-07-19 22:04:47,371 [main] base.BaseTest  - typed in field username_CSS
+INFO    2024-07-19 22:04:47,447 [main] base.BaseTest  - typed in field password_XPATH
+INFO    2024-07-19 22:04:48,828 [main] base.BaseTest  - Clicked on Element signInBtn_XPATH
+INFO    2024-07-19 22:04:50,870 [main] base.BaseTest  - text returned Welcome, muh asif!
+INFO    2024-07-19 22:04:50,872 [main] base.BaseTest  - User logged in successfully
+INFO    2024-07-19 22:04:51,509 [main] base.BaseTest  - Execution of tests completed

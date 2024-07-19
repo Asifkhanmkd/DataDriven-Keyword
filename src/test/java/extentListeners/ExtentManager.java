@@ -3,15 +3,10 @@ package extentListeners;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.StandardCopyOption;
 import java.util.Date;
-
 
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.io.FileHandler;
 
 import com.aventstack.extentreports.ExtentReports;
@@ -57,8 +52,7 @@ public class ExtentManager {
 			
 				
 				
-				  File screeshot = ((TakesScreenshot)
-				  BaseTest.driver).getScreenshotAs(OutputType.FILE);
+				  File screeshot = ((TakesScreenshot)BaseTest.driver).getScreenshotAs(OutputType.FILE);
 				  FileHandler.copy(screeshot, new File(".//reports//"+fileName));
 				 
 			 
